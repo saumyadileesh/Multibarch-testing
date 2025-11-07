@@ -9,14 +9,14 @@ pipeline {
 
         stage('Preparation') {
             steps {
-                echo "Building branch: ${env.PROD}"
+                echo "Building branch: ${env.dev}"
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo "Running build for branch: ${env.PROD}"
+                echo "Running build for branch: ${env.dev}"
                 // Example build command
                 sh 'echo "Simulating build process..."'
             }
@@ -33,12 +33,12 @@ pipeline {
         stage('Deploy') {
             when {
                 anyOf {
-                    branch 'main'
-                    branch 'master'
+                    branch 'dev'
+                    branch 'dev'
                 }
             }
             steps {
-                echo "Deploying application for branch: ${env.BRANCH_NAME}"
+                echo "Deploying application for branch: ${env.dev}"
                 sh 'echo "Simulating deployment..."'
             }
         }
