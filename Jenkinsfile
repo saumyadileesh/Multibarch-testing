@@ -9,14 +9,14 @@ pipeline {
 
         stage('Preparation') {
             steps {
-                echo "Building branch: ${env.dev}"
+                echo "Building branch: ${env.ppa}"
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo "Running build for branch: ${env.dev}"
+                echo "Running build for branch: ${env.ppa}"
                 // Example build command
                 sh 'echo "Simulating build process..."'
             }
@@ -33,12 +33,12 @@ pipeline {
         stage('Deploy') {
             when {
                 anyOf {
-                    branch 'dev'
-                    branch 'dev'
+                    branch 'ppa'
+                    branch 'ppa'
                 }
             }
             steps {
-                echo "Deploying application for branch: ${env.dev}"
+                echo "Deploying application for branch: ${env.ppa}"
                 sh 'echo "Simulating deployment..."'
             }
         }
@@ -46,7 +46,7 @@ pipeline {
 
     post {
         success {
-            echo "✅ Build succeeded on branch: ${env.BRANCH_NAME}"
+            echo "✅ Build went successfull on branch: ${env.BRANCH_NAME}"
         }
         failure {
             echo "❌ Build failed on branch: ${env.BRANCH_NAME}"
