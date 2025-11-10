@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PROJECT_NAME = "multibranch-demo"
+        PROJECT_NAME = "multibranch-test-demo"
     }
 
     stages {
@@ -46,7 +46,7 @@ pipeline {
 
     post {
         success {
-            echo "✅ Build succeeded on branch: ${env.BRANCH_NAME}"
+            echo "✅ Build went succeeded on branch: ${env.BRANCH_NAME}"
         }
         failure {
             echo "❌ Build failed on branch: ${env.BRANCH_NAME}"
